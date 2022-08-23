@@ -1,0 +1,45 @@
+<h1>Showing Gym</h1>
+<ul>
+  <li>
+    <img src="<%= HamVarzeshi.AvatarGym.url({@gym.avatar, @gym}) %>" style=" width:30%; height:30%; display: block; margin-left: auto; margin-right: auto;">
+  </li>
+  <li>
+    <strong>Name: </strong>
+    <%= @gym.name %>
+  </li>
+  <li>
+    <strong>Description: </strong>
+    <%= @gym.description %>
+  </li>
+  <li>
+    <strong>Starting Time: </strong>
+    <%= @gym.start_time %>
+  </li>
+  <li>
+    <strong>Hours: </strong>
+    <%= @gym.hours %>
+  </li>
+  <li>
+    <strong>Price: </strong>
+    <%= (@gym.hours) * 10 %>
+  </li>
+  <li>
+    <strong>Rating: </strong>
+    <%= @gym.rating %>
+  </li>
+</ul>
+ <form id="chat-form">
+  <textarea placeholder="Your comment" id="user-msg"></textarea>
+  <button type="submit">Post</button>
+</form>
+<div id="chat-box">
+  <%= for message <- @messages do %>
+    <p><b><%= message.user.username %>:</b> <%= message.body %></p>
+  <% end %>
+</div>
+<script>
+    window.gymId = "<%= @gym.id %>"
+</script>
+
+<span><%= link "Edit  ", to: Routes.gym_path(@conn, :edit, @gym) %></span><br>
+<span><%= link "Back  ", to: Routes.gym_path(@conn, :index) %></span>

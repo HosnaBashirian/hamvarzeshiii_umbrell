@@ -1,0 +1,27 @@
+<h1>Listing Users</h1>
+<table>
+<thead>
+    <tr>
+      <th>Avatar</th>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+<tbody>
+    <%= for user <- @users do %>
+    <tr>
+      <td><%= if HamVarzeshi.AvatarUser.url({user.avatar, user}) != nil do %>
+          <img src="<%= HamVarzeshi.AvatarUser.url({user.avatar, user}) %>" style=" width:20%; height:20%; border-radius: 50%;">
+    <% end %>
+    </td>
+      <td><%= user.username %></td>
+      <td>
+        <span><%= link "Show", to: Routes.user_path(@conn, :show, user) %></span><br>
+        <span><%= link "Edit", to: Routes.user_path(@conn, :edit, user) %></span><br>
+        <span><%= link "Delete", to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %></span><br>
+      </td>
+    </tr>
+<% end %>
+</tbody>
+</table>

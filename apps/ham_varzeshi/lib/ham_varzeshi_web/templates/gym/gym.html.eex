@@ -1,0 +1,1 @@
+<strong><%= gym_info(@gym) %></strong> (<%= @gym.id %>)

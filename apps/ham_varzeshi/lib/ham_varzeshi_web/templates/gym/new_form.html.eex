@@ -1,0 +1,28 @@
+<%= form_for @changeset, Routes.gym_path(@conn, :create),[multipart: true], fn f ->%>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+  <div>
+    <%= text_input f, :name, placeholder: "Name" %>
+    <%= error_tag f, :name %>
+  </div>
+  <div>
+    <%= label f, :description %>
+    <%= textarea f, :description %>
+    <%= error_tag f, :description %>
+  </div>
+  <div>
+    <%= label f, :start_time, "Starting Time"%>
+    <%= text_input f, :start_time%>
+    <%= error_tag f, :start_time %>
+  </div>
+  <div>
+    <%= label f, :hours, "hours"%>
+    <%= number_input f, :hours, prompt: "Choose a number" %>
+    <%= error_tag f, :hours %>
+  </div>
+    <%= submit "Create Gym" %>
+  </div>
+<% end %>

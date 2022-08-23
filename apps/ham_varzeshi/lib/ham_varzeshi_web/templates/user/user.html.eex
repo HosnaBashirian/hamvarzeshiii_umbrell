@@ -1,0 +1,1 @@
+<strong><%= user_info(@user) %></strong> (<%= @user.id %>)
